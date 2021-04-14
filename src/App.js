@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+
+    const handleDark = () => {
+        const html = document.querySelector('#jodido');
+        
+        html.classList.add('dark')
+    }
+    return (
+        <div>
+            <h1>Hola</h1>
+            <h2>Hola</h2>
+
+            <button
+            onClick={ handleDark }
+            className="w-1/2 flex items-center justify-center rounded-md bg-black text-white dark:bg-white dark:text-black" type="submit">Buy now</button>
+        </div>
+    )
 }
 
-export default App;
+export default App
