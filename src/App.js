@@ -1,20 +1,14 @@
 import React from 'react'
+import './App.css'
+
 
 const App = () => {
 
-    const handleDark = () => {
-        const html = document.querySelector('#jodido');
-        
-        html.classList.add('dark')
-    }
+    
     return (
         <div>
-            <h1>Hola</h1>
-            <h2>Hola</h2>
-
-            <button
-            onClick={ handleDark }
-            className="w-1/2 flex items-center justify-center rounded-md bg-black text-white dark:bg-white dark:text-black" type="submit">Buy now</button>
+            <h1>Hola mundo</h1>
+            
         </div>
     )
 }
