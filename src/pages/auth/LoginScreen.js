@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { startLogin } from '../../actions/auth';
 
+import { startLogin } from '../../actions/auth';
 import { useForm } from '../../hooks/useForm';
-import { ButtonAuth } from '../ui/ButtonAuth';
-import { InputWithLabel } from '../ui/InputWithLabel';
+import { ButtonAuth } from '../../components/ui/ButtonAuth';
+import { InputWithLabel } from '../../components/ui/InputWithLabel';
 
 export const LoginScreen = () => {
   const dispatch = useDispatch();
 
   const [routeUser, setRouteType] = useState(true);
+
+  console.log(routeUser)
 
   const { type } = useParams();
 
@@ -94,7 +96,7 @@ export const LoginScreen = () => {
 
               <div className='text-sm'>
                 <a
-                  href='#'
+                  href='google'
                   className='font-medium text-indigo-600 hover:text-indigo-500'>
                   ¿Olvidaste tu contraseña?
                 </a>
@@ -115,3 +117,4 @@ export const LoginScreen = () => {
     </div>
   );
 };
+

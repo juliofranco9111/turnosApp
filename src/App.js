@@ -1,15 +1,18 @@
 import React from 'react'
+import { Provider } from 'react-redux'
+import { AuthRouter } from './routers/AuthRouter'
+import { store } from './store/store'
 import './App.css'
 
 
 const App = () => {
 
-    
+
     return (
-        <div>
-            <h1>Hola mundo</h1>
-            
-        </div>
+        <Provider store={store}>
+            <AuthRouter />
+        </Provider>
+
     )
 }
 
