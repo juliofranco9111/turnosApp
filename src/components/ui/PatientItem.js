@@ -1,30 +1,30 @@
 import React from 'react';
 
-export const PatientItem = () => {
+export const PatientItem = ({ img, name, doc='666277541', email,phone }) => {
   return (
-    <div className='grid bg-transparent opacity-80 hover:opacity-100'>
-      <div className=''>
-        <div className='flex justify-center p-3'>
+    <div className='grid bg-transparent opacity-70 hover:opacity-100'>
+      <div>
+        <div className='flex p-3'>
           <div className='h-20 w-20 mr-4'>
             <img
               className='rounded-full'
-              src='https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=2&amp;w=256&amp;h=256&amp;q=80'
-              alt='hola'
+              src={ img }
+              alt={name}
             />
           </div>
           <div className='text-left'>
             <div className='text-sm leading-5 font-medium text-gray-900 dark:text-gray-100'>
-              Maria Gonzalez Zubizarreta
+              {name}
             </div>
             <div className='text-sm leading-5 text-gray-500 dark:text-gray-400'>
-              c.c 38756275
+              C.C. {doc}
             </div>
-            <div className='text-sm leading-5 text-gray-500 dark:text-gray-400'>
-              john@example.com
+            <div className='text-xs leading-5 text-gray-500 dark:text-gray-400'>
+              {email}
             </div>
 
             <div className='text-sm leading-5 font-medium text-gray-700 dark:text-gray-100'>
-              317-268-0024
+              {phone}
             </div>
 
             <div className='flex w-full space-x-3 text-gray-600 dark:text-gray-400 p-3'>
