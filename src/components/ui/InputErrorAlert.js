@@ -1,10 +1,10 @@
 import React from 'react';
 
-export const InputErrorAlert = ({ title = '', msg = '', type = '' }) => {
+export const InputErrorAlert = ({ title = 'hola', msg = 'hola', type = 'error' }) => {
   if (type === 'error') {
     return (
       <div
-        className='bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative animate__animated animate__fadeIn'
+        className='bg-red-300 border border-red-600 text-red-700 px-4 py-3 rounded relative animate__animated animate__fadeIn'
         role='alert'>
         <strong className='font-bold'>{ title }</strong>
         <br/>

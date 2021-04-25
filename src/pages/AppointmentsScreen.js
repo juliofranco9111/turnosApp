@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const PendingScreen = () => {
+export const AppointmentsScreen = () => {
     return (
         <div>
-            <h1>Pending</h1>
+            <h1>appointments</h1>
         </div>
     )
 }

@@ -100,7 +100,6 @@ body {
     position: fixed;
     bottom: 0px;
     z-index: 10;
-    display: none;
   }
   
   
@@ -131,12 +130,7 @@ body {
   
     #sideBar{
       display: none;
-    }
-  
-    .navbar__mobile{
-      display: block;
-    }
-     
+    }    
   
     #section_date {
       margin-top: 20px;
@@ -404,6 +398,15 @@ body {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   }
   
+
+  .table__patients{
+    height: 70vh;
+    width: 100%;
+  }
+
+  .border-b-1{
+    border-bottom: 1px solid;
+  }
   
   
   

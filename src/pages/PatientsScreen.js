@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { PatientsTable } from '../components/ui/PatientsTable';
 
 export const PatientsScreen = () => {
-    return (
-        <div>
-            Pacientes
-        </div>
-    )
-}
+  return (
+    <div className='mx-auto w-full md:w-10/12 xl:w-10/12'>
+
+      
+      <PatientsTable />
+    </div>
+  );
+};

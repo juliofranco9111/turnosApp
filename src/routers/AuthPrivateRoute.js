@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router';
 
-export const PrivateRoute = ({
+export const AuthPrivateRoute = ({
     isLoggedIn,
     component: Component,
     ...rest
@@ -12,14 +12,14 @@ export const PrivateRoute = ({
             component={ (props) =>(
                 (isLoggedIn)
                     ? (<Component { ...props } />)
-                    : ( <Redirect to="/ingreso/usuarios" /> )
+                    : ( <Redirect to="/ingreso" /> )
             )}
         />
     )
 }
 
 
-PrivateRoute.propTypes = {
+AuthPrivateRoute.propTypes = {
     isLoggedIn: PropTypes.bool.isRequired,
     component: PropTypes.func.isRequired
 }

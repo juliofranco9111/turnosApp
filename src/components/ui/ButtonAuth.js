@@ -16,7 +16,8 @@ export const ButtonAuth = ({
           type={type}
           className='group relative w-full flex justify-center py-2 px-4 border 
                             border-transparent text-sm font-medium rounded-md 
-                            text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
+                            text-gray-100 bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                            dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:text-gray-100'>
           <span className='animate__animated animate__fadeInDown animate__faster absolute left-0 inset-y-0 flex items-center pl-3'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -41,7 +42,8 @@ export const ButtonAuth = ({
           disabled
           className='disabled group relative w-full flex justify-center py-2 px-4 border 
                             border-transparent text-sm font-medium rounded-md 
-                            text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500'>
+                            text-gray-100 bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                            dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:text-gray-100'>
           <span className='animate__animated animate__fadeInUp animate__faster absolute left-0 inset-y-0 flex items-center pl-3'>
             <svg
               xmlns='http://www.w3.org/2000/svg'

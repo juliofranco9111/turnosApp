@@ -1,12 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 export const ItemNavbarMobile = ({ d = '', to = '' }) => {
     return (
-        <div className='flex-shrink-0 flex flex-row items-center justify-center'>
-              <Link
+              <NavLink
                 to={ to }
-                className='block mt-2 text-sm font-semibold text-gray-900 bg-transparent rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 focus:bg-gray-200 focus:outline-none focus:shadow-outline'>
+                className='w-full h-full flex-shrink-0 flex flex-row items-center
+                justify-center block text-sm font-semibold text-gray-600
+                hover:text-gray-800 hover:bg-gray-200 focus:text-gray-900 focus:bg-gray-200 focus:outline-none focus:shadow-outline
+                dark:text-gray-400 dark:hover:bg-gray-700
+                dark:hover:text-gray-200 dark:focus:bg-gray-700 
+                dark:focus:text-gray-200
+                '>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
                   className='h-8 w-8'
@@ -20,7 +25,6 @@ export const ItemNavbarMobile = ({ d = '', to = '' }) => {
                     d={ d } 
                   />
                 </svg>
-              </Link>
-            </div>
+              </NavLink>
     )
 }

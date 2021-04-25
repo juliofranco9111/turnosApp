@@ -2,18 +2,15 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { BrowserRouter as Router, Switch, Redirect } from 'react-router-dom';
 
-import { PrivateRoute } from './PrivateRoute';
-import { PublicRoute } from './PublicRouter';
-
+import { AuthPrivateRoute } from './AuthPrivateRoute';
+import { AuthPublicRoute } from './AuthPublicRouter';
 
 import { Loading } from '../components/ui/Loading';
 import { startChecking } from '../actions/auth';
 
-
 import { LoginScreen } from '../pages/auth/LoginScreen';
 import { RegisterScreen } from '../pages/auth/RegisterScreen';
-import { HomeScreen } from '../pages/HomeScreen';
-
+import { HomeRouter } from './HomeRouter';
 
 export const AuthRouter = () => {
   const dispatch = useDispatch();
@@ -31,26 +28,27 @@ export const AuthRouter = () => {
       <Router>
         <div>
           <Switch>
-
-            <PublicRoute
+            <AuthPublicRoute
+            exact
               path='/ingreso'
               component={LoginScreen}
               isLoggedIn={!!uid}
             />
-            <PublicRoute
+            <AuthPublicRoute
+            exact
               path='/registro/:type'
               component={RegisterScreen}
               isLoggedIn={!!uid}
             />
 
-            <PrivateRoute
+            <AuthPrivateRoute
               exact
-              path='/home'
-              component={HomeScreen}
+              path='/inicio'
+              component={HomeRouter}
               isLoggedIn={!!uid}
             />
 
-            <Redirect to='/ingreso' />
+            <Redirect to='/inicio' />
           </Switch>
         </div>
       </Router>
