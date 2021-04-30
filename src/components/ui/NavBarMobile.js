@@ -1,14 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogout } from '../../actions/auth';
-import { MenuAdmin, MenuUser } from '../../helpers/sidebarMenu';
 import { ItemNavbarMobile } from './ItemNavbarMobile';
+import { getMenu } from '../../helpers/sidebarMenu';
 
 export const NavBarMobile = () => {
-  const { role } = useSelector((state) => state.user);
+  const { role, img } = useSelector((state) => state.user);
   const dispatch = useDispatch()
-
-  const menu = role === 'PROFESSIONAL_ROLE' ? MenuAdmin : MenuUser;
+  
+  const [menu, setMenu] = useState([])
+ 
+  
+  useEffect(() => {
+   setMenu(getMenu(role))
+ }, [ role ])  
 
   const toggleTheme = () => {
     const html = document.getElementById('toggle-theme');
@@ -23,14 +28,13 @@ export const NavBarMobile = () => {
     dispatch(startLogout())
   }
 
-  console.log(role);
   return (
     <div className='navbar__mobile md:hidden bg-gray-50 w-full dark:bg-gray-800 pb-1'>
       <nav>
         <ul className='flex justify-between'>
-          {menu.map((item) => (
-            <li className='w-full'>
-              <ItemNavbarMobile key={item.name} d={item.d} to={item.path} />
+          {menu && menu.length !== 0 && menu.map((item) => (
+            <li key={item.name} className='w-full'>
+              <ItemNavbarMobile d={item.d} to={item.path} />
             </li>
           ))}
           <li className='w-full'>
@@ -58,8 +62,9 @@ export const NavBarMobile = () => {
               </svg>
             </button>
           </li>
+          
           <li className='w-full'>
-            <button
+          <button
             onClick={ handleLogout }
             
             className='w-full h-full flex-shrink-0 flex flex-row items-center
@@ -68,19 +73,8 @@ export const NavBarMobile = () => {
             dark:text-gray-400 dark:hover:bg-gray-700
             dark:hover:text-gray-200 dark:focus:bg-gray-700 
             dark:focus:text-gray-200'>
-              <svg
-                xmlns='http://www.w3.org/3000/svg'
-                className='h-6 w-6'
-                fill='none'
-                viewBox='0 0 24 24'
-                stroke='currentColor'>
-                <path
-                  strokeLinecap='round'
-                  strokeLinejoin='round'
-                  strokeWidth={2}
-                  d='M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1'
-                />
-              </svg>
+              
+              <img src={img} alt="" className='w-9 rounded-full' />
             </button>
           </li>
         </ul>

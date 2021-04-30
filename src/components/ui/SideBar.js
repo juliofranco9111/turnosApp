@@ -2,27 +2,26 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { startLogout } from '../../actions/auth';
-import { MenuAdmin, MenuUser, classActive } from '../../helpers/sidebarMenu';
+import { setTheme } from '../../actions/ui';
+import { classActive, getMenu } from '../../helpers/sidebarMenu';
 
 export const SideBar = () => {
-  const { role } = useSelector((state) => state.user);
   const dispatch = useDispatch()
-  const [menu, setMenu] = useState(MenuUser)
-
-  const toggleTheme = () => {
-    const html = document.getElementById('toggle-theme');
-    if (html.classList.contains('dark')) {
-      html.classList.remove('dark');
-    } else {
-      html.classList.add('dark');
-    }
-  };
-
-
-useEffect(() => {
-  setMenu(role === 'PROFESSIONAL_ROLE' ? MenuAdmin : MenuUser)
+  const { role, img, name } = useSelector(state => state.user);
+  const [menu, setMenu] = useState([])
+ 
   
-}, [role])
+  useEffect(() => {
+   setMenu(getMenu(role))
+ }, [ role ])
+
+
+   const setUserTheme = () => {
+    dispatch(setTheme())
+  }; 
+
+
+
 
   
   const handleLogout = () => {
@@ -31,9 +30,9 @@ useEffect(() => {
 
 
   return (
-    <aside className='hidden fixed md:flex flex-col h-screen justify-between bg-white dark:bg-gray-800 shadow p-6'>
+    <aside className='hidden fixed md:flex flex-col h-screen justify-between bg-white shadow p-6 dark:bg-gray-800'>
       <nav className='inline-flex flex-col space-y-2'>
-        {menu && menu.map((item) => {
+        {menu && menu.length !== 0 && menu.map((item) => {
           return (
             <NavLink
               key={item.name}
@@ -47,7 +46,9 @@ useEffect(() => {
         })}
 
         <button
-          onClick={toggleTheme}
+          onClick={
+            setUserTheme
+          }
           className='flex items-center text-gray-600 py-2 cursor-pointer hover:bg-gray-100 pl-2 pr-6 rounded-lg dark:text-gray-300 dark:hover:bg-gray-700'>
           <span className='w-8 h-8 p-1 mr-4'>
             <svg
@@ -71,11 +72,15 @@ useEffect(() => {
           
       <NavLink to='/perfil'>
         <img
-          className='mx-auto w-20 rounded-full align-bottom select-none'
-          src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQetGpe6zBMFfl_TbPQo5FHJKJtLHLjiJHXZA&usqp=CAU'
+          className='mx-auto w-20 mb-3 rounded-full align-bottom select-none'
+          src={img}
           alt='avatar'
           />
       </NavLink>
+      <div className='w-full mb-3'>
+
+      <h1 className='text-center text-xl font-medium text-gray-600 dark:text-gray-300'>{name}</h1>
+      </div>
       <button 
       onClick={ handleLogout }
       className='flex items-center text-gray-600 py-2 cursor-pointer hover:bg-gray-100 pl-2 pr-6 rounded-lg dark:text-gray-300 dark:hover:bg-gray-700'>

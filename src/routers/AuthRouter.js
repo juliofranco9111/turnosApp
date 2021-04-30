@@ -11,11 +11,14 @@ import { startChecking } from '../actions/auth';
 import { LoginScreen } from '../pages/auth/LoginScreen';
 import { RegisterScreen } from '../pages/auth/RegisterScreen';
 import { HomeRouter } from './HomeRouter';
+import { getTheme } from '../actions/ui';
 
 export const AuthRouter = () => {
   const dispatch = useDispatch();
-
   const { uid, checking } = useSelector((state) => state.auth);
+
+  dispatch(getTheme());
+
 
   useEffect(() => {
     dispatch(startChecking());

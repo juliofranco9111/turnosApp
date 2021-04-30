@@ -9,7 +9,7 @@ export const TableHead = () => {
       <SearchInput />
       </div>
       <div className='col-span-2 pr-3 xl:px-12'>
-      <ButtonGeneral title='Nuevo' bg='blue' />
+      <ButtonGeneral title='Nuevo' text='gray-50' bg='blue' />
       </div>
     </div>
   );

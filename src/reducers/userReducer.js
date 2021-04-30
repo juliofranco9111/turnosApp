@@ -1,7 +1,7 @@
 import { types } from '../types/types';
 
 const initialState = {
-    loading: true
+  loading: true,
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -10,11 +10,11 @@ export const userReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload,
-        loading:false
+        loading: false,
       };
     case types.userClearUser:
       return {
-        loading:false
+        loading: false,
       };
 
     default:

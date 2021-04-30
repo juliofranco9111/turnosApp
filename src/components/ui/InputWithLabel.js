@@ -12,7 +12,8 @@ export const InputWithLabel = ({
     <>
     {
       label && 
-      <label className='block mb-2 text-sm font-medium text-gray-600 dark:text-blue-500'>
+
+      <label className='block mb-2 text-sm font-medium text-gray-600 dark:text-gray-300'>
         {label}
       </label>
     }

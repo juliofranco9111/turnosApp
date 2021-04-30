@@ -16,6 +16,7 @@ export const getProfileUser = (uid) => {
           name: nameUser,
           email: body.email,
           role: body.role,
+          img: body.img,
         })
       );
     }

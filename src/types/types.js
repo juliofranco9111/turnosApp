@@ -4,6 +4,7 @@ export const types = {
     uiRemoveError: '[UI] Remove Error',
     uiStartLoading: '[UI] Start loading',
     uiFinishLoading: '[UI] Finish loading',
+    uiSetTheme: '[ui] Set theme',
 
     authCheckingFinish: '[auth] Finish cheking login state',
     authStartLogin: '[auth] Start login',
@@ -18,12 +19,13 @@ export const types = {
     userSetUser: '[user] Set user profile',
     userClearUser: '[user] Clear user profile',
 
-    appointmentStartLoadingVerify: '[appointment] Start Verify',
-    appointmentClearVerify: '[appointment] Start Verify',
+    appointmentStartLoadingVerify: '[appointment] Start verify',
+    appointmentClearVerify: '[appointment] Start verify',
     appointmentVerifyDate: '[appointment] Verify date aviable',
     appointmentSetProfessional: '[appointment] Set Professional',
     appointmentSetDate: '[appointment] Set Date',
     appointmentClear: '[appointment] Clear data',
+
     
     
 
