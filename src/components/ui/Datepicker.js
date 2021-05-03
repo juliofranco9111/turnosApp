@@ -22,7 +22,7 @@ export const Datepicker = () => {
 
   useEffect(() => {
     dispatch(getProfessionals());
-  }, []);
+  }, [dispatch]);
   const { loading, msg, ok } = verify;
 
   const handleDayClick = (day, { selected, disabled }) => {
@@ -60,7 +60,6 @@ export const Datepicker = () => {
           onDayClick={handleDayClick}
           firstDayOfWeek={1}
           selectedDays={date}
-          disabledDays={{ daysOfWeek: [0, new Date().getDate()] }}
         />
 
         <div id='container__hour' className='grid px-3 mx-auto w-full'>

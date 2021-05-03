@@ -74,7 +74,6 @@ export const startLogin = (email, password) => {
 
     const body = await resp.json();
 
-    console.log(body);
 
     if (!body.ok) {
       Swal.fire('Error', body.msg, 'error');
@@ -82,7 +81,6 @@ export const startLogin = (email, password) => {
     } else {
       localStorage.setItem('token', body.token);
       localStorage.setItem('token-init-date', new Date().getTime());
-      console.log(body.uid);
       dispatch(
         login({
           uid: body.uid,

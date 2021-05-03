@@ -7,6 +7,8 @@ import { ButtonGeneral } from '../components/ui/ButtonGeneral';
 import { INPUT_CLASS } from '../helpers/commonCss';
 import { adminRole } from '../helpers/role';
 
+const inputFile = document.querySelector('#picturePicker')
+
 export const ProfileScreen = () => {
   const user = useSelector((state) => state.user);
 
@@ -42,7 +44,13 @@ export const ProfileScreen = () => {
     userDocument,
   } = formValues;
 
-  //document.querySelector('#picturePicker').click()
+  //.click()
+
+  const handleUploadImage = () => {
+    console.log(inputFile)
+
+    inputFile.click()
+  };
 
   if (loading) {
     return <Loading />;
@@ -50,17 +58,19 @@ export const ProfileScreen = () => {
 
   return (
     <div className='mt-24'>
+      <input type='file' className='opacity-0' id='picturePicker' />
       <div
         className='w-full mx-auto rounded-lg bg-white shadow-lg px-5 pt-5 pb-10 text-gray-800 dark:bg-gray-800'
         style={{ maxWidth: '500px' }}>
-        <div className='w-full pt-1 pb-5'>
-          <div className='overflow-hidden rounded-full w-32 h-32 -mt-24 mx-auto shadow-lg border-4 border-gray-100'>
+        <div className='w-full pt-1 pb-4'>
+          <div
+            onClick={handleUploadImage}
+            className='overflow-hidden rounded-full w-32 h-32 -mt-24 mx-auto shadow-lg border-4 border-gray-100'>
             <img src={img} alt='hola' />
           </div>
         </div>
 
         <div className='w-full'>
-          <input type='file' className='hidden' id='picturePicker' />
           <InputWithLabel
             placeholder='Nombre...'
             value={userName || ''}
@@ -84,7 +94,8 @@ export const ProfileScreen = () => {
             <InputWithLabel
               placeholder='Documento...'
               value={userDocument}
-              name='userDocument'change={handleInputChange}
+              name='userDocument'
+              change={handleInputChange}
             />
           )}
           <InputWithLabel
@@ -93,12 +104,14 @@ export const ProfileScreen = () => {
             name='userPhone'
             change={handleInputChange}
           />
-          <textarea
-            value={userDescription || ''}
-            name='userDescription'
-            onChange={handleInputChange}
-            className={`w-full h-12 ${INPUT_CLASS}`}
-            placeholder='Reseña..'></textarea>
+          {role === adminRole && (
+            <textarea
+              value={userDescription || ''}
+              name='userDescription'
+              onChange={handleInputChange}
+              className={`w-full h-12 ${INPUT_CLASS}`}
+              placeholder='Reseña..'></textarea>
+          )}
         </div>
 
         <div className='mt-6'>

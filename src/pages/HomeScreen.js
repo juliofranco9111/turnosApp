@@ -1,5 +1,5 @@
 import React from 'react';
-import { LastActivity } from '../components/ui/LastActivity';
+import { PendingList } from '../components/ui/PendingList';
 import { TodayList } from '../components/ui/TodayList';
 
 export const HomeScreen = () => {
@@ -12,15 +12,13 @@ export const HomeScreen = () => {
 
   return (
       <div className='md:grid grid-cols-3 gap-2 h-full'>
-        <div>
-          <TodayList />
+        <div className='overflow-hidden'>
+          <TodayList /> 
         </div>
         <div></div>
         <div className='h-full overflow-y-scroll'>
-          <span className='text-gray-800 dark:text-gray-100'>
-            Ultima actividad
-          </span>
-          <LastActivity />
+          
+          <PendingList />
         </div>
       </div>
     
