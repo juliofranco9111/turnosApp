@@ -1,34 +1,31 @@
-
 export const types = {
-    uiSetError: '[UI] Set Error',
-    uiRemoveError: '[UI] Remove Error',
-    uiStartLoading: '[UI] Start loading',
-    uiFinishLoading: '[UI] Finish loading',
-    uiSetTheme: '[ui] Set theme',
+  uiSetError: '[UI] Set Error',
+  uiRemoveError: '[UI] Remove Error',
+  uiStartLoading: '[UI] Start loading',
+  uiFinishLoading: '[UI] Finish loading',
+  uiSetTheme: '[UI] Set theme',
+  uiListMonthShow: '[UI] Show list months user',
+  uiListMonthHide: '[UI] Hide list months user',
 
-    authCheckingFinish: '[auth] Finish cheking login state',
-    authStartLogin: '[auth] Start login',
-    authLogin: '[auth] Login',
-    authStartRegister: '[auth] Start register',
-    authStartTokenRenew: '[auth] Start token renew',
-    authRegister: '[auth] register',
-    authLogout: '[auth] Logout',
+  authCheckingFinish: '[auth] Finish cheking login state',
+  authStartLogin: '[auth] Start login',
+  authLogin: '[auth] Login',
+  authStartRegister: '[auth] Start register',
+  authStartTokenRenew: '[auth] Start token renew',
+  authRegister: '[auth] register',
+  authLogout: '[auth] Logout',
 
-    userVerifyDocument: '[user] Verify  document',
-    userErrorDocument: '[user] Error document',
-    userSetUser: '[user] Set user profile',
-    userClearUser: '[user] Clear user profile',
+  userVerifyDocument: '[user] Verify  document',
+  userErrorDocument: '[user] Error document',
+  userSetUser: '[user] Set user profile',
+  userClearUser: '[user] Clear user profile',
 
-    appointmentStartLoadingVerify: '[appointment] Start verify',
-    appointmentClearVerify: '[appointment] Start verify',
-    appointmentVerifyDate: '[appointment] Verify date aviable',
-    appointmentSetProfessional: '[appointment] Set Professional',
-    appointmentSetDate: '[appointment] Set Date',
-    appointmentClear: '[appointment] Clear data',
-
-    
-    
-
-
-}
-
+  appointmentStartLoadingVerify: '[appointment] Start verify',
+  appointmentClearVerify: '[appointment] Clear verify',
+  appointmentVerifyDate: '[appointment] Verify date aviable',
+  appointmentSetProfessional: '[appointment] Set Professional',
+  appointmentSetDate: '[appointment] Set Date',
+  appointmentClear: '[appointment] Clear data',
+  appointmentClearSelectedDay: '[appointment] Clear selected day',
+  appointmentCreated: '[appointment] Created',
+};

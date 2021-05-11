@@ -10,7 +10,7 @@ export const DropdownSidebar = ({ handleTheme, handleLogout }) => {
       role='menu'>
         <NavLink
           to='/perfil'
-          className='flex items-center text-gray-500 my-2 cursor-pointer pl-3 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-50'>
+          className='flex items-center text-gray-500 my-2 cursor-pointer focus:outline-none focus:border-none pl-3 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-50'>
           <span className='w-8 h-8 p-1 mr-4'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
@@ -30,7 +30,7 @@ export const DropdownSidebar = ({ handleTheme, handleLogout }) => {
         </NavLink>
         <button
           onClick={handleTheme}
-          className='flex items-center text-gray-500 my-2 cursor-pointer pl-3 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-50'>
+          className='flex items-center text-gray-500 my-2 cursor-pointer focus:outline-none focus:border-none pl-3 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-50'>
           <span className='w-8 h-8 p-1 mr-4'>
             <svg
               xmlns='http://www.w3.org/3000/svg'
@@ -60,7 +60,7 @@ export const DropdownSidebar = ({ handleTheme, handleLogout }) => {
 
         <button
           onClick={handleLogout}
-          className='flex items-center text-gray-500  cursor-pointer pl-3 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-50'>
+          className='flex items-center text-gray-500  cursor-pointer focus:outline-none focus:border-none pl-3 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-50'>
           <span className='w-8 h-8 p-1 mr-4'>
             <svg
               xmlns='http://www.w3.org/2000/svg'

@@ -4,19 +4,29 @@ import { setCapital } from '../helpers/setCapitalizedString';
 //import Swal from 'sweetalert2';
 import { types } from '../types/types';
 
-export const startVerifyDate = (date) => {
-  return async (dispatch) => {
-    dispatch({ type: types.appointmentStartLoadingVerify });
-    const resp = await fetchWithToken(`turnos/${date}`);
+export const startVerifyDate = ({ start }) => {
+  
+  if (start) {
+    return async (dispatch) => {
+      dispatch({ type: types.appointmentStartLoadingVerify });
 
-    const response = await resp.json();
+      const resp = await fetchWithToken(`turnos/date/${start.getTime()}`);
 
-    dispatch(verifyDate(response));
+      const response = await resp.json();
 
-    if (response.ok) {
-      dispatch(setDate(date));
-    }
-  };
+      console.log(response);
+
+      dispatch(verifyDate(response));
+
+      if (response.ok) {
+        dispatch(
+          setDate({
+            start
+          })
+        );
+      }
+    };
+  }
 };
 
 const verifyDate = (response) => ({
@@ -28,17 +38,26 @@ export const clearVerify = () => ({
   type: types.appointmentClearVerify,
 });
 
+export const clearSelectedDay = () => ({
+  type: types.appointmentClearSelectedDay,
+});
+
 export const getProfessionals = () => {
   return async (dispatch) => {
     const resp = await fetchWithoutToken('usuario/profesionales');
 
     const response = await resp.json();
 
-    const { avatar, name, _id: id } = response.professionals[0];
+    const { name, _id: id, img, specialty } = response.professionals[0];
 
     const professionalName = setCapital(name);
 
-    dispatch(setProfessional({ avatar, name: professionalName, id }));
+    const professional = { name: professionalName, id, img, specialty };
+
+    console.log('una vez')
+    
+    dispatch(setProfessional(professional));
+    console.log('2 vez')
   };
 };
 
@@ -60,18 +79,11 @@ export const startCreateAppointment = (appointment) => {
 
     console.log(response);
     if (response.ok) {
-      Swal.fire(
-        'Éxito',
-        response.msg,
-        'success'
-      );
+      Swal.fire('Éxito', response.msg, 'success');
+
       dispatch(appointmentCreated());
-    }else{
-      Swal.fire(
-        'Algo salió mal :(',
-        response.msg,
-        'error'
-      );
+    } else {
+      Swal.fire('Algo salió mal :(', response.msg, 'error');
     }
   };
 };

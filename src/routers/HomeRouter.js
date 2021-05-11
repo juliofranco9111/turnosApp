@@ -28,7 +28,7 @@ export const HomeRouter = () => {
       <div className='flex'>
         <SideBar />
         <NavBarMobile />
-        <div className='h-screen w-full md:ml-52 p-3'>
+        <div className='min-h-screen w-full md:ml-52 p-3'>
           <Switch>
             <Route path='/inicio' component={HomeScreen} />
             <Route path='/pendientes' component={PendingScreen} />

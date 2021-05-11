@@ -28,7 +28,7 @@ export const Alert = ({ type, text, loading = true }) => {
   switch (type) {
     case 'info':
       return (
-        <div className='flex items-center justify-between shadow-md bg-blue-500 text-white py-2 px-4 my-2 animate__animated animate__fadeIn'>
+        <div className='flex rounded items-center justify-between shadow-md bg-blue-500 text-white py-2 px-4 my-2 animate__animated animate__fadeIn'>
           {loading ? (
             loader
           ) : (
@@ -47,7 +47,7 @@ export const Alert = ({ type, text, loading = true }) => {
 
     case 'warning':
       return (
-        <div class='flex items-center justify-between shadow-md bg-yellow-500 text-white py-2 px-4 my-2 animate__animated animate__fadeIn'>
+        <div class='flex rounded items-center justify-between shadow-md bg-yellow-500 text-white py-2 px-4 my-2 animate__animated animate__fadeIn'>
           {loading ? (
             loader
           ) : (
@@ -65,7 +65,7 @@ export const Alert = ({ type, text, loading = true }) => {
       );
     case 'success':
       return (
-        <div className='flex items-center justify-between shadow-md bg-green-500 text-white py-2 px-4 my-2 animate__animated animate__fadeIn'>
+        <div className='flex rounded items-center justify-between shadow-md bg-green-500 text-white py-2 px-4 my-2 animate__animated animate__fadeIn'>
           {loading ? (
             loader
           ) : (
@@ -83,7 +83,7 @@ export const Alert = ({ type, text, loading = true }) => {
       );
     case 'danger':
       return (
-        <div className='flex items-center justify-between shadow-md bg-red-500 text-white py-2 px-4 my-2 animate__animated animate__fadeIn'>
+        <div className='flex rounded items-center justify-between shadow-md bg-red-500 text-white py-2 px-4 my-2 animate__animated animate__fadeIn'>
           {loading ? (
             loader
           ) : (

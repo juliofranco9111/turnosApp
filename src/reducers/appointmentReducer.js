@@ -2,6 +2,12 @@ import { types } from '../types/types';
 
 const intialState = {
   verify: { loading: false },
+  date: {
+    month: new Date().getMonth(),
+    year: new Date().getFullYear(),
+    hour: 9,
+    day: new Date().getDate()
+  },
 };
 
 export const appointmentReducer = (state = intialState, action) => {
@@ -23,7 +29,17 @@ export const appointmentReducer = (state = intialState, action) => {
       };
     case types.appointmentClearVerify:
       return {
+        ...state,
         verify: { loading: false },
+      };
+
+    case types.appointmentClearSelectedDay:
+      return {
+        ...state,
+        verify: {
+          loading: false,
+        },
+        date: {},
       };
 
     case types.appointmentSetProfessional:
@@ -34,11 +50,14 @@ export const appointmentReducer = (state = intialState, action) => {
     case types.appointmentSetDate:
       return {
         ...state,
-        date: action.payload,
+        date: {
+          ...state.date,
+          ...action.payload,
+        },
       };
     case types.appointmentClear:
       return {
-        verify: { loading: false }
+        verify: { loading: false },
       };
 
     default:

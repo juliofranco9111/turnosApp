@@ -18,6 +18,7 @@ export const AuthRouter = () => {
   const { uid, checking } = useSelector((state) => state.auth);
 
   dispatch(getTheme());
+  
 
 
   useEffect(() => {

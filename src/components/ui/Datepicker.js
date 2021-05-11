@@ -13,19 +13,39 @@ import {
   startVerifyDate,
   clearVerify,
   getProfessionals,
+  clearSelectedDay,
 } from '../../actions/appointment';
 
 export const Datepicker = () => {
   const dispatch = useDispatch();
-  const [date, setDate] = useState();
+
+  const [date, setDate] = useState({
+    day: null,
+    month: null,
+    year: null,
+    start: null,
+    end: null,
+  });
+
+  const { day, month, year, start, end } = date;
+
+  useEffect(() => {
+    if (start & end) {
+      console.log('se disparó');
+      dispatch(startVerifyDate({ start, end }));
+    } else {
+      return;
+    }
+  }, [dispatch, end, start]);
+
   const { verify } = useSelector((state) => state.appointment);
+  const { loading, msg, ok } = verify;
 
   useEffect(() => {
     dispatch(getProfessionals());
   }, [dispatch]);
-  const { loading, msg, ok } = verify;
 
-  const handleDayClick = (day, { selected, disabled }) => {
+  const handleDayClick = (selectedDay, { selected, disabled }) => {
     if (disabled) {
       return;
     }
@@ -34,48 +54,53 @@ export const Datepicker = () => {
       return;
     }
 
-    if (day.getTime() > new Date().getTime()) {
+    if (selectedDay.getTime() > new Date().getTime()) {
+      dispatch(clearSelectedDay());
       dispatch(clearVerify());
-      setDate(day);      
+      setDate({
+        day: selectedDay.getDate(),
+        month: selectedDay.getMonth(),
+        year: selectedDay.getFullYear(),
+        start: null,
+        end: null,
+      });
     } else {
-      return
+      return;
     }
-    /* fn(day); */
   };
 
   const setHour = (hour) => {
-    const newDate = new Date(date);
-    newDate.setHours(hour);
-    setDate(newDate);
-    dispatch(startVerifyDate(newDate));
+    const startDate = new Date(year, month, day, parseInt(hour), 0);
+    const endDate = new Date(year, month, day, parseInt(hour) + 1, 0);
+    setDate({ ...date, start: startDate, end: endDate });
   };
 
   return (
-    <>
-      <div className='grid md:grid-cols-2 gap-2'>
+    
+      <div className='w-full grid md:grid-cols-2 gap-2'>
         <DayPicker
           months={MONTHS}
           weekdaysLong={WEEKDAYS_LONG}
           weekdaysShort={WEEKDAYS_SHORT}
           onDayClick={handleDayClick}
           firstDayOfWeek={1}
-          selectedDays={date}
+          disabledDays={{ daysOfWeek: [0] }}
+          selectedDays={new Date(year, month, day)}
         />
 
+        <div className='block w-11/12 mx-auto'>
+          {loading && msg && (
+            <Alert type='info' text='Comprobando...' loading={true} />
+          )}
+          {ok && msg && <Alert type='success' loading={false} text={msg} />}
+
+          {!ok && msg && <Alert type='danger' loading={false} text={msg} />}
+        </div>
+
         <div id='container__hour' className='grid px-3 mx-auto w-full'>
-          <ListHour date={date} fn={setHour} />
+          <ListHour date={day} fn={setHour} />
         </div>
       </div>
 
-      <div className='block'>
-        {loading && msg && (
-          <Alert type='info' text='Comprobando...' loading={true} />
-        )}
-
-        {ok && msg && <Alert type='success' loading={false} text={msg} />}
-
-        {!ok && msg && <Alert type='danger' loading={false} text={msg} />}
-      </div>
-    </>
   );
 };
