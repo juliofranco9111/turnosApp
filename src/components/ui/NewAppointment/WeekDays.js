@@ -1,52 +1,47 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setDate } from '../../../actions/appointment';
-import { WEEKDAYS_SHORT } from '../../../helpers/datePickerLocale';
+import { showDaysList } from '../../../actions/ui';
+import { WEEKDAYS_SHORT, MONTHS } from '../../../helpers/datePickerLocale';
 import { daysInMonth } from '../../../helpers/daysInMonth';
-import { ListHour } from '../ListHour';
 
 export const WeekDays = () => {
   const dispatch = useDispatch()
-  const {year, month} = useSelector(state => state.appointment.date)
+  const {year, month, day} = useSelector(state => state.appointment.date)
+  const { listDays } = useSelector(state => state.ui)
   const today = new Date().getDate();
   const todayMonth = new Date().getMonth();
   const days = daysInMonth(year, month);
 
-  
- 
-  const [daySelected, setDaySelected] = useState( month === todayMonth ? today : 1);
-
-  
   const handleClick = (day) => {
-    
     dispatch(setDate({day}))
-    setDaySelected(day)
+    dispatch(showDaysList(listDays));
   };
 
   return (
         
-      <div
-       className='grid grid-flow-col grid-rows-1 col-span-2 w-full mt-6 mx-auto h-auto'>
+      <>
+         <h1 className='font-bold text-2xl text-center mb-3 dark:text-gray-200'>{MONTHS[month]}</h1>
 
         <div className='grid grid-cols-6'>
           {month === todayMonth
             ? days.map(
-                (day) =>
-                  day >= today &&
-                  new Date(year, month, day).getDay() !== 0 && (
+                (dayRes) =>
+                dayRes >= today &&
+                  new Date(year, month, dayRes).getDay() !== 0 && (
                     <button
-                      onClick={() => handleClick(day)}
-                      key={day}
-                      className={`w-auto h-auto text-center p-2 dark:text-gray-400 outline-none focus:outline-none col-start-${new Date(
+                      onClick={() => handleClick(dayRes)}
+                      key={dayRes}
+                      className={`w-auto h-16 text-center dark:text-gray-400 outline-none focus:outline-none col-start-${new Date(
                         year,
                         month,
-                        day
+                        dayRes
                       ).getDay()}`}>
-                      <p className={ daySelected === day ? 'text-indigo-500 font-bold dark:text-indigo-500 border rounded-full': 'dark:text-gray-300'}>{day}</p>
+                      <span className={ day === dayRes ? 'font-bold bg-indigo-500 rounded text-gray-50 p-1': 'dark:text-gray-300'}>{dayRes}</span>
                       <p className='text-gray-500'>
                         {
                           WEEKDAYS_SHORT[
-                            new Date(year, month, day).getDay()
+                            new Date(year, month, dayRes).getDay()
                           ]
                         }
                       </p>
@@ -54,21 +49,25 @@ export const WeekDays = () => {
                   )
               )
             : days.map(
-                (day) =>
-                  new Date(year, month, day).getDay() !== 0 && (
+                (dayRes,i) =>
+                  new Date(year, month, dayRes).getDay() !== 0 && (
                     <button
-                      onClick={() => handleClick(day)}
-                      key={day}
+                      onClick={() => handleClick(dayRes)}
+                      key={dayRes}
                       className={`w-auto h-auto text-center outline-none focus:outline-none p-2 col-start-${new Date(
                         year,
                         month,
-                        day
+                        dayRes
                       ).getDay()}`}>
-                      <p className={ daySelected === day ? 'text-indigo-500 font-bold dark:text-indigo-500' : 'dark:text-gray-300'}>{day}</p>
-                      <p className='text-gray-500 dark:text-gray-500'>
+                        {
+                          dayRes === i ?
+                          <p className={ 'text-gray-800 font-bold dark:text-gray-500'}>{dayRes}</p> :
+                      <p className={ 'text-gray-500 font-bold dark:text-gray-500'}>{dayRes}</p>
+                        }
+                      <p className='text-gray-400 dark:text-gray-500'>
                         {
                           WEEKDAYS_SHORT[
-                            new Date(year, month, day).getDay()
+                            new Date(year, month, dayRes).getDay()
                           ]
                         }
                       </p>
@@ -76,7 +75,7 @@ export const WeekDays = () => {
                   )
               )}
         </div>
-      </div>
+      </>
       
         
      

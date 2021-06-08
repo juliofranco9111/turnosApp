@@ -57,7 +57,7 @@ export const CalendarComponent = ({ events }) => {
           events={events}
           views={['month', 'week', 'day']}
           step={30}
-          style={{ height: '800px', borderRadius: '10px', overflow: 'hidden' }}
+          style={{ margin:'0 auto', width:'99%', minHeight: '80vh', height:'79vh', maxHeight:'90vh', borderRadius: '10px', overflow: 'hidden' }}
           messages={msgs}
         />
     

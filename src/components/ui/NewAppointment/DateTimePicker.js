@@ -1,70 +1,62 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { showList } from '../../../actions/ui';
-import { Alert } from '../Alert';
-import { ButtonGeneral } from '../ButtonGeneral';
-import { ListHour } from '../ListHour';
-import { ModalMonths } from '../Modal';
+import { showDaysList, showHoursList, showList } from '../../../actions/ui';
+import { MONTHS } from '../../../helpers/datePickerLocale';
+import { ModalMonths } from './Modal';
+import { ModalDatePicker } from './ModalDatePicker';
 import { ButtonMonth } from './ButtonMonth';
-import { WeekDays } from './WeekDays';
+import { ModalTimePicker } from './ModalTimePicker';
 
 export const DateTimePicker = () => {
-  const { list } = useSelector((state) => state.ui);
-  const { verify } = useSelector((state) => state.appointment);
-  const { month } = useSelector((state) => state.appointment.date);
+  const { list, listDays, listHour } = useSelector((state) => state.ui);
+  const { month, day, hour } = useSelector((state) => state.appointment.date);
   const dispatch = useDispatch();
 
   const [currentMonth, setCurrentMonth] = useState(month);
+
 
   useEffect(() => {
     setCurrentMonth(month);
   }, [month]);
 
+
   const toggleList = () => {
     dispatch(showList(list));
+  };
+  const toggleListDays = () => {
+    dispatch(showDaysList(listDays));
+  };
+
+  const toggleListHours = () => {
+    dispatch(showHoursList(listHour));
   };
 
   return (
     <>
       <div className='mx-auto mt-4'>
-        <div className='text-center rounded'>
-          <div className='mx-auto'>
-            <ButtonMonth toggleList={toggleList} />
-          </div>
+        <div className='mx-auto text-center rounded grid grid-cols-3 gap-1 justify-center'>
+            <ButtonMonth fn={toggleListDays} msg={day} />
+            <ButtonMonth fn={toggleList} msg={MONTHS[month]} />
+            <ButtonMonth fn={toggleListHours} msg={`${hour}:00`} />
 
           {list && (
-            <div className='relative z-40 p-4 items-center w-full'>
+            <div className='relative p-4 items-center w-full'>
               <ModalMonths show={list} />
+            </div>
+          )}
+          {listDays && (
+            <div className='relative p-4 bg-white items-center w-full'>
+              <ModalDatePicker show={listDays} />
+            </div>
+          )}
+          {listHour && (
+            <div className='relative p-4 bg-white items-center w-full'>
+              <ModalTimePicker show={listHour} />
             </div>
           )}
         </div>
       </div>
-      <div className='grid grid-cols-1 md:grid-cols-2 md:w-4/5 mx-auto'>
-        <div className='grid-cols-1'>
-          <WeekDays currentMonth={currentMonth} />
-        </div>
-        <div className='grid-cols-1'>
-          <ListHour />
-        </div>
-      </div>
-      <div className='mx-auto'>
-        {verify.loading && (
-          <Alert type='info' text='Comprobando...' loading={true} />
-        )}
-        {!verify.loading && verify.ok && (
-          <>
-            <Alert type='success' loading={false} text={verify.msg} />
-            <div className='mt-4'>
-
-            <ButtonGeneral title='Solicitar' bg='gray' />
-            </div>
-            
-          </>
-        )}
-        {verify.ok === false && !verify.loading && (
-          <Alert type='danger' loading={false} text='Hola mundo' />
-        )}
-      </div>
+  
     </>
   );
 };

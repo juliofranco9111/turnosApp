@@ -1,6 +1,9 @@
 import { types } from '../types/types';
 
 const intialState = {
+  create:{
+    loading:false
+  },
   verify: { loading: false },
   date: {
     month: new Date().getMonth(),
@@ -8,7 +11,19 @@ const intialState = {
     hour: 9,
     day: new Date().getDate()
   },
-};
+  appointmentsList: {
+    //User
+    data: [],
+    loading: true
+  },
+  appointmentMonthList: {
+    data: [],
+    loading: true
+  },
+  appointmentDayList: []
+  
+}
+  
 
 export const appointmentReducer = (state = intialState, action) => {
   switch (action.type) {
@@ -57,8 +72,51 @@ export const appointmentReducer = (state = intialState, action) => {
       };
     case types.appointmentClear:
       return {
+        ...state,
         verify: { loading: false },
       };
+
+
+    
+    case types.appointmentLoadingCreate:
+      return {
+        ...state,
+        create:{
+          loading:true
+        }
+      };
+
+    case types.appointmentCreated:
+      return {
+        ...state,
+        create:{
+          loading:false
+        }
+      };
+
+    case types.appointmentListPendingUser: 
+    return {
+      ...state,
+      appointmentsList: {
+        data: action.payload,
+        loading:false
+      }
+    };
+
+    case types.appointmentListPendingAdmin: 
+    return {
+      ...state,
+      appointmentMonthList: {
+        data: action.payload,
+        loading:false
+      }
+    }
+
+    case types.appointmentSetListDays:
+      return{
+        ...state,
+        appointmentDayList: action.payload
+      }
 
     default:
       return state;

@@ -13,7 +13,7 @@ export const InputWithLabel = ({
     {
       label && 
 
-      <label className='block mb-2 text-sm font-medium text-gray-600 dark:text-gray-300'>
+      <label className='block mb-2 ml-3 text-sm font-medium text-gray-500 dark:text-gray-500'>
         {label}
       </label>
     }

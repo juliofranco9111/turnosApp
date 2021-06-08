@@ -1,67 +1,60 @@
-import React from 'react'
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import moment from 'moment';
-import { SelectProfessionalMenu } from '../components/ui/SelectProfessionalMenu';
-import { ButtonGeneral } from '../components/ui/ButtonGeneral';
-import { Datepicker } from '../components/ui/Datepicker';
 import { startCreateAppointment } from '../actions/appointment';
-
-
-moment.locale('es');
+import { ButtonGeneral } from '../components/ui/ButtonGeneral';
+import { DateTimePicker } from '../components/ui/NewAppointment/DateTimePicker';
+import { ProfessionalCard } from '../components/ui/NewAppointment/ProfessionalCard';
+import { MONTHS } from '../helpers/datePickerLocale';
 
 export const NewAppointmentScreen = () => {
-    const dispatch = useDispatch();
-    const { professional, date, verify } = useSelector((state) => state.appointment);
-    const { uid } = useSelector((state) => state.auth);
+  const { appointment, auth } = useSelector(state => state);
 
+  const dispatch = useDispatch()
 
-   
-    const handleSubmit = () => {
-      dispatch(
-        startCreateAppointment({
-          professional: professional.id,
-          user: uid,
-          start: date.start,
-          end: date.end
-        })
-      );      
-      
-    };
+  const { professional, date, create } = appointment;
+  const { year,month,day, hour } = date;
+  const {uid} = auth;
+
+  
+  
+  const getDate = () => {
+
+    return [ new Date(year, month, day, hour).getTime(), new Date(year, month, day, hour + 1).getTime() ]
+
+  }
+  
+  
+  
+  const handleCreateAppointment = () => {
+
+    const appointment = {
+      professional: professional.id,
+      user: uid,
+      start: getDate()[0],
+      end: getDate()[1],
+    }
+    console.log(appointment)
+    dispatch( startCreateAppointment( appointment ) )
+  }
 
   return (
-    <section
-      id='section_date'
-      className='w-full md:max-w-2xl mx-auto bg-white rounded-md shadow-md mb-12 dark:bg-gray-800'>
-      <div className='mb-6'>
-        <h2 className='text-3xl font-semibold text-center text-gray-800 dark:text-white'>
-          Nuevo turno
-        </h2>
-      </div>
+    <div className='w-full sm:w-10/12 md:w-8/12 lg:w-6/12 mx-auto'>
+      <ProfessionalCard />
+      <DateTimePicker />
+      <h1 className='text-center font-bold text-gray-500 text-2xl my-3 dark:text-gray-500'>
+        {day} de {MONTHS[month]}, {year} - {hour}:00 hs
+      </h1>
+      <div className='w-2/3 md:w-1/3 mx-auto'>
 
-      <div>
-        <div className='w-full mt-4 px-6'>
-          <SelectProfessionalMenu {...professional} />
-
-          <a className='underline text-gray-500 dark:text-gray-100' href='google.com'>
-            Ver perfil
-          </a>
+      <ButtonGeneral
+        title='Solicitar'
+        fn={handleCreateAppointment}
+        text='gray-100'
+        bg='indigo'
+        loading={create.loading}
+        disabled={false}
+        />
         </div>
-
-        <div className='justify-center dark:text-white'>
-          <Datepicker />
-        </div>
-
-        <div className='mx-auto mb-10 pb-12 w-11/12'>
-          {uid && professional && date && verify.ok && (
-            <ButtonGeneral
-              fn={handleSubmit}
-              title='Agendar'
-              text='white'
-              bg='blue'
-            />
-          )}
-        </div>
-      </div>
-    </section>
+    </div>
   );
 };

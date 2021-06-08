@@ -65,7 +65,7 @@ export const Alert = ({ type, text, loading = true }) => {
       );
     case 'success':
       return (
-        <div className='flex rounded items-center justify-between shadow-md bg-green-500 text-white py-2 px-4 my-2 animate__animated animate__fadeIn'>
+        <div className='flex rounded items-center text-center justify-between shadow-md bg-green-500 text-white py-2 px-4 my-2 animate__animated animate__fadeIn'>
           {loading ? (
             loader
           ) : (

@@ -1,3 +1,4 @@
+import { MenuAdmin, MenuUser } from '../helpers/sidebarMenu';
 import { types } from '../types/types';
 
 const html = document.getElementById('toggle-theme');
@@ -36,4 +37,23 @@ export const setTheme = () => {
 };
 
 export const showList = ( list ) => ({ type: list ? types.uiListMonthHide : types.uiListMonthShow }  );
+export const showDaysList = ( list ) => ({ type: list ? types.uiListDayshHide : types.uiListDaysShow }  );
+export const showHoursList = ( list ) => ({ type: list ? types.uiListHourshHide : types.uiListHoursShow }  );
+
+
+export const getOptionsNavbar = ( role ) => {
+
+  if(role === 'PROFESSIONAL_ROLE'){
+    return {
+      type: types.uiSetMenu,
+      payload: MenuAdmin
+    }
+  }else{
+    return {
+      type: types.uiSetMenu,
+      payload: MenuUser
+    }
+  }
+
+}
 

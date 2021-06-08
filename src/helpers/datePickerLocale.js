@@ -13,12 +13,27 @@ export const MONTHS = [
   'Diciembre',
 ];
 export const WEEKDAYS_LONG = [
-  'Domingo',
   'Lunes',
   'Martes',
-  'Mercoles',
+  'Miercoles',
   'Jueves',
   'Viernes',
   'Sabado',
+  'Domingo',
 ];
-export const WEEKDAYS_SHORT = ['Do', 'Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa'];
+export const WEEKDAYS_SHORT = ['Lu', 'Ma', 'Mi', 'Ju', 'Vi', 'Sa', 'Do'];
+
+export const MONTHS_DAYS = [
+  31,
+  28,
+  31,
+  30,
+  31,
+  30,
+  31,
+  31,
+  30,
+  31,
+  30,
+  31,
+]

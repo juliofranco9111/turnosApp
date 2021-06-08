@@ -5,28 +5,15 @@ import { setCapital } from '../helpers/setCapitalizedString';
 import { types } from '../types/types';
 
 export const startVerifyDate = ({ start }) => {
-  
-  if (start) {
-    return async (dispatch) => {
-      dispatch({ type: types.appointmentStartLoadingVerify });
+  return async (dispatch) => {
+    dispatch({ type: types.appointmentStartLoadingVerify });
 
-      const resp = await fetchWithToken(`turnos/date/${start.getTime()}`);
+    const resp = await fetchWithToken(`turnos/date/${start}`);
 
-      const response = await resp.json();
+    const response = await resp.json();
 
-      console.log(response);
-
-      dispatch(verifyDate(response));
-
-      if (response.ok) {
-        dispatch(
-          setDate({
-            start
-          })
-        );
-      }
-    };
-  }
+    dispatch(verifyDate(response));
+  };
 };
 
 const verifyDate = (response) => ({
@@ -53,11 +40,7 @@ export const getProfessionals = () => {
     const professionalName = setCapital(name);
 
     const professional = { name: professionalName, id, img, specialty };
-
-    console.log('una vez')
-    
     dispatch(setProfessional(professional));
-    console.log('2 vez')
   };
 };
 
@@ -73,17 +56,19 @@ export const setDate = (date) => ({
 
 export const startCreateAppointment = (appointment) => {
   return async (dispatch) => {
+    dispatch(setLoading(true));
     const resp = await fetchWithToken('turnos', appointment, 'POST');
 
     const response = await resp.json();
 
     console.log(response);
     if (response.ok) {
-      Swal.fire('Éxito', response.msg, 'success');
-
       dispatch(appointmentCreated());
+      Swal.fire('Éxito', response.msg, 'success');
+      dispatch(setLoading(false));
     } else {
       Swal.fire('Algo salió mal :(', response.msg, 'error');
+      dispatch(setLoading(false));
     }
   };
 };
@@ -91,3 +76,50 @@ export const startCreateAppointment = (appointment) => {
 const appointmentCreated = () => ({
   type: types.appointmentClear,
 });
+
+const setLoading = (bool) => ({
+  type: bool ? types.appointmentLoadingCreate : types.appointmentCreated,
+});
+
+export const getPendingList = () => {
+  return async (dispatch) => {
+    const resp = await fetchWithToken('turnos/usuario');
+
+    const response = await resp.json();
+
+    const { appointments } = response;
+
+    if (response.ok) {
+      dispatch(setPendingList(appointments));
+    }
+  };
+};
+
+const setPendingList = (list) => ({
+  type: types.appointmentListPendingUser,
+  payload: list,
+});
+
+export const getPendingListMonth = (month) => {
+  return async (dispatch) => {
+    const resp = await fetchWithToken(`turnos/profesional/${month}`);
+
+    const response = await resp.json();
+
+    const { appointments } = response;
+
+    if (response.ok) {
+      dispatch(setPendingListMonth(appointments));
+    }
+  };
+};
+
+const setPendingListMonth = (list) => ({
+  type: types.appointmentListPendingAdmin,
+  payload: list,
+});
+
+export const setListDays = (list) => ({
+  type: types.appointmentSetListDays,
+  payload: list
+})

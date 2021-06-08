@@ -13,7 +13,7 @@ import { PatientsScreen } from '../pages/PatientsScreen';
 import { PendingScreen } from '../pages/PendingScreen';
 import { ProfileScreen } from '../pages/ProfileScreen';
 import { NewAppointmentScreen } from '../pages/NewAppointmentScreen';
-import { AppointmentsScreen } from '../pages/AppointmentsScreen';
+import { AppointmentsScreen } from '../pages/user/AppointmentsScreen';
 import { NavBarMobile } from '../components/ui/NavBarMobile';
 
 export const HomeRouter = () => {
@@ -28,7 +28,7 @@ export const HomeRouter = () => {
       <div className='flex'>
         <SideBar />
         <NavBarMobile />
-        <div className='min-h-screen w-full md:ml-52 p-3'>
+        <div className='min-h-screen md:pl-24 w-full p-3'>
           <Switch>
             <Route path='/inicio' component={HomeScreen} />
             <Route path='/pendientes' component={PendingScreen} />

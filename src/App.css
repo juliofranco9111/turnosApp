@@ -97,15 +97,16 @@ body {
   }
   
   .navbar__mobile {
-    position: fixed;
-    bottom: 0px;
+   
+    bottom: 10px;
     z-index: 10;
+    width: 90%;
+    left: 0;
+    right: 0;
+    margin: auto
+   
   }
   
-  
-  .navbar__mobile nav ul {
-    height: 60px;
-  }
   
   .navbar__mobile nav ul li div {
     width: auto;
@@ -123,7 +124,7 @@ body {
   
   @media (max-width: 500px) {
     body {
-      padding-bottom: 60px;
+      
       padding-left: 0px;
       padding-right: 0px;
     }
@@ -408,6 +409,9 @@ body {
     border-bottom: 1px solid;
   }
 
+
+
+  
 
   
   

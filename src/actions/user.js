@@ -1,6 +1,7 @@
 import { fetchWithToken } from '../helpers/fetch';
 import { types } from '../types/types';
 import { setCapital } from '../helpers/setCapitalizedString';
+import { getOptionsNavbar } from './ui';
 
 export const getProfileUser = (uid) => {
   return async (dispatch) => {
@@ -19,6 +20,7 @@ export const getProfileUser = (uid) => {
           img: body.img,
         })
       );
+      dispatch(getOptionsNavbar(body.role));
     }
   };
 };

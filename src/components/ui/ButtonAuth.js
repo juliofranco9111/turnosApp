@@ -15,10 +15,10 @@ export const ButtonAuth = ({
           onClick={fn}
           type={type}
           className='group relative w-full flex justify-center py-2 px-4 border 
-                            border-transparent text-sm font-medium rounded-md 
-                            text-gray-100 bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
+                            border-gray-200 bg-indigo-500 text-sm font-medium rounded-md 
+                            text-gray-50 hover:bg-indigo-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500
                             dark:bg-indigo-600 dark:hover:bg-indigo-700 dark:text-gray-100'>
-          <span className='animate__animated animate__fadeInDown animate__faster absolute left-0 inset-y-0 flex items-center pl-3'>
+          {/* <span className='animate__animated animate__fadeInDown animate__faster absolute left-0 inset-y-0 flex items-center pl-3'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               className='h-6 w-6'
@@ -32,7 +32,7 @@ export const ButtonAuth = ({
                 d='M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z'
               />
             </svg>
-          </span>
+          </span> */}
           <span className='animate__animated animate__fadeInDown animate__faster'>
             {title}
           </span>
