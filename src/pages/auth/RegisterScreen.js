@@ -149,6 +149,7 @@ export const RegisterScreen = () => {
           </div>
           <div>
             {!routeUser ? (
+              
               <p className='mt-2 text-center text-sm text-gray-600'>
                 <Link
                   to='/registro/usuario'
