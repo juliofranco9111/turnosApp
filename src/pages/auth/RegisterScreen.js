@@ -1,40 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ButtonAuth } from '../../components/ui/ButtonAuth';
 import { useForm } from '../../hooks/useForm';
 import { InputWithLabel } from '../../components/ui/InputWithLabel';
 //import { InputErrorAlert } from '../../components/ui/InputErrorAlert';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { startRegister } from '../../actions/auth';
 import { LogoAuth } from '../../components/ui/LogoAuth';
 
 export const RegisterScreen = () => {
-  const [routeUser, setRouteType] = useState(true);
   //const [errors, setErrors] = useState(false);
   const [loading, setLoading] = useState(false);
 
-  const { type } = useParams();
-
-  useEffect(() => {
-    if (type === 'profesional') {
-      setRouteType(false);
-    }
-  }, [type]);
-
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
   const initialValues = {
     fName: '',
     lName: '',
     email: '',
-    specialty: '',
+    document: '',
     password: '',
     rePassword: '',
   };
 
   const [values, handleInputChange] = useForm(initialValues);
 
-  const { fName, lName, email, specialty, password, rePassword } = values;
+  const { fName, lName, email, password, rePassword, document } = values;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +33,7 @@ export const RegisterScreen = () => {
 
     const formData = {
       ...values,
-      role: type === 'profesional' ? 'PROFESSIONAL_ROLE' : 'USER_ROLE',
+      role: 'USER_ROLE',
     };
 
     console.log(formData);
@@ -52,122 +43,103 @@ export const RegisterScreen = () => {
   };
 
   return (
-    <div className='animate__animated animate__fadeIn'>
-      <div className='sm:min-h-screen flex flex-col items-center justify-center py-12 sm:px-6 lg:px-8'>
-        <div className='max-w-md w-full space-y-8 sm:bg-gray-200 sm:dark:bg-gray-800 p-8 rounded'>
-          <div>
-            <LogoAuth />
-            <h2 className='text-center text-3xl font-extrabold text-gray-700 dark:text-gray-300'>
-              Crear una cuenta
-            </h2>
-          </div>
-          <form className='mt-8 space-y-6' action='#' method='POST'>
-            <div className='rounded-md shadow-sm -space-y-px'>
-              {/* {!errors && (
-                <div className='animate__animated animate__fadeIn animate__faster'>
-                  <InputErrorAlert />
+    <div className='sm:min-h-screen flex flex-col items-center justify-center sm:px-6 lg:px-8 animate__animated animate__fadeIn'>
+      <div className='max-w-lg sm:max-w-sm w-full space-y-5 sm:border-b-2 sm:border-indigo-500 dark:border-indigo-500 p-2'>
+        <LogoAuth />
+        <h2 className='text-center font-light text-4xl text-indigo-500 dark:text-indigo-500'>
+          Crea tu cuenta
+        </h2>
+        <form className='mt-8 space-y-6' action='#' method='POST'>
+          <div className='-space-y-px'>
+             
+             {/*    <div className='animate__animated animate__fadeIn animate__faster'>
+                  <InputErrorAlert title='Error' msg='la contraseña está mala'/>
                 </div>
-              )} */}
-              
-              <div className='justify-between'>
-                  <InputWithLabel
-                    type='text'
-                    name='fName'
-                    placeholder='Nombre'
-                    value={fName}
-                    change={handleInputChange}
-                  />
-                  <InputWithLabel
-                    type='text'
-                    name='lName'
-                    placeholder='Apellido'
-                    value={lName}
-                    change={handleInputChange}
-                  />
+              */}
+
+            <div>
+              <InputWithLabel
+                type='text'
+                name='fName'
+                placeholder='Nombre'
+                svgPath='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'
+                value={fName}
+                change={handleInputChange}
+              />
+            </div>
+            <div>
+              <InputWithLabel
+                type='text'
+                name='lName'
+                svgPath='M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z'
+                placeholder='Apellido'
+                value={lName}
+                change={handleInputChange}
+              />
+            </div>
+
+            <div className='grid grid-cols-1'>
+              <div>
+                <InputWithLabel
+                  type='number'
+                  name='document'
+                  placeholder='Documento'
+                  svgPath='M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2'
+                  value={document}
+                  change={handleInputChange}
+                />
               </div>
-
-              {!routeUser && (
-                <div>
-                  <InputWithLabel
-                    type='text'
-                    name='specialty'
-                    placeholder='Especialidad'
-                    value={specialty}
-                    change={handleInputChange}
-                  />
-                </div>
-              )}
-
               <div>
                 <InputWithLabel
                   type='email'
                   name='email'
                   placeholder='Correo electrónico'
                   value={email}
+                  svgPath='M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207'
                   change={handleInputChange}
                 />
               </div>
-              <div>
-                <InputWithLabel
-                  type='password'
-                  name='password'
-                  placeholder='Contraseña'
-                  value={password}
-                  change={handleInputChange}
-                />
-              </div>
-              <div>
-                <InputWithLabel
-                  type='password'
-                  name='rePassword'
-                  placeholder='Repetir constraseña'
-                  value={rePassword}
-                  change={handleInputChange}
-                />
-              </div>
+            </div>
+            <div>
+              <InputWithLabel
+                type='password'
+                name='password'
+                svgPath='M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01'
+                placeholder='Contraseña'
+                value={password}
+                change={handleInputChange}
+              />
             </div>
 
             <div>
-              <ButtonAuth
-                fn={handleSubmit}
-                title='Registrarse'
-                loading={loading}
+              <InputWithLabel
+                type='password'
+                name='rePassword'
+                placeholder='Repite contraseña'
+                svgPath='M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z'
+                value={rePassword}
+                change={handleInputChange}
               />
             </div>
-          </form>
-        </div>
-        <div className='flex justify-center space-x-12 mx-auto mt-4 w-full'>
+          </div>
+        </form>
+        <div className='grid grid-cols-2 mx-auto mt-4 w-full'>
           <div>
             <p className='mt-2 text-center text-sm text-gray-600'>
               <Link
                 to='/ingreso'
                 className='font-medium text-gray-600 hover:text-gray-800 
-                    dark:text-gray-300 dark:hover:text-gray-100'>
+              dark:text-gray-300 dark:hover:text-gray-100'>
                 Ya tengo una cuenta
               </Link>
             </p>
           </div>
           <div>
-            {!routeUser ? (
-              
-              <p className='mt-2 text-center text-sm text-gray-600'>
-                <Link
-                  to='/registro/usuario'
-                  className='font-medium text-gray-600 hover:text-gray-800 
-                      dark:text-gray-300 dark:hover:text-gray-100'>
-                  Registrarme como usuario
-                </Link>
-              </p>
-            ) : (
-              <p className='mt-2 text-center text-sm text-gray-600'>
-                <Link
-                  to='/registro/profesional'
-                  className='font-medium text-gray-600 hover:text-gray-800
-                      dark:text-gray-300 dark:hover:text-gray-100'>
-                  Soy un profesional
-                </Link>
-              </p>
-            )}
+            <ButtonAuth
+              fn={handleSubmit}
+              title='Registrarse'
+              loading={loading}
+            />
           </div>
         </div>
       </div>

@@ -29,20 +29,20 @@ export const LoginScreen = () => {
   };
 
   return (
-    <div className='min-h-screen flex flex-col items-center justify-center py-12 sm:px-6 lg:px-8 animate__animated animate__fadeIn'>
+    <div className='sm:min-h-screen flex flex-col items-center justify-center py-12 sm:px-6 lg:px-8 animate__animated animate__fadeIn'>
       <div className='max-w-lg bg-transparent sm:max-w-sm w-full space-y-8 sm:border-b-2 sm:border-indigo-500 dark:border-indigo-500 p-2'>
-          <LogoAuth />
-          <h2 className='text-center font-light text-4xl text-indigo-500 dark:text-indigo-500 '>
-            Hola, Julio
-          </h2>
+        <LogoAuth />
+        <h2 className='text-center font-light text-4xl text-indigo-500 dark:text-indigo-500 '>
+          Hola, Julio
+        </h2>
         <form className='mt-8 space-y-6' action='#' method='POST'>
           <input type='hidden' name='remember' value='true' />
-          <div className='rounded-md shadow-sm -space-y-px'>
+          <div className='-space-y-px'>
             <div>
               <InputWithLabel
                 type='email'
                 name='email'
-                label='e-Mail'
+                svgPath='M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207'
                 placeholder='Correo electrónico'
                 value={email}
                 change={handleInputChange}
@@ -52,10 +52,10 @@ export const LoginScreen = () => {
               <InputWithLabel
                 type='password'
                 name='password'
-                label='Contraseña'
                 placeholder='Contraseña'
                 value={password}
                 change={handleInputChange}
+                svgPath='M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z'
               />
             </div>
           </div>
@@ -71,7 +71,7 @@ export const LoginScreen = () => {
               <label
                 htmlFor='remember_me'
                 className='ml-2 block text-sm text-gray-700 dark:text-gray-300 dark:bg-transparent'>
-                  Recordar
+                Recordar
               </label>
             </div>
             <div className='w-full col-span-2 py-2'>
@@ -94,11 +94,8 @@ export const LoginScreen = () => {
             Olvidé mi contraseña
           </a>
         </div>
-        <div className='text-sm w-12/12 text-center border border-gray-300 hover:bg-gray-200 transition hover:text-gray-900 hover:shadow dark:border-gray-50 rounded p-2'>
-          <Link
-            to='/registro/usuario'>
-            Crea una cuenta
-          </Link>
+        <div className='text-sm w-12/12 text-center border border-gray-300 hover:bg-gray-200 transition hover:text-gray-900 hover:shadow dark:border-gray-50 dark:text-gray-200 dark:hover:text-gray-800  rounded p-2'>
+          <Link to='/registro'>Crea una cuenta</Link>
         </div>
       </div>
     </div>

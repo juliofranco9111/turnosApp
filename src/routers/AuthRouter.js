@@ -40,7 +40,7 @@ export const AuthRouter = () => {
             />
             <AuthPublicRoute
             exact
-              path='/registro/:type'
+              path='/registro'
               component={RegisterScreen}
               isLoggedIn={!!uid}
             />
