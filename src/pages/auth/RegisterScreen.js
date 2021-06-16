@@ -36,7 +36,6 @@ export const RegisterScreen = () => {
       role: 'USER_ROLE',
     };
 
-    console.log(formData);
 
     dispatch(startRegister(formData));
     setLoading(false);
@@ -44,7 +43,7 @@ export const RegisterScreen = () => {
 
   return (
     <div className='sm:min-h-screen flex flex-col items-center justify-center sm:px-6 lg:px-8 animate__animated animate__fadeIn'>
-      <div className='max-w-lg sm:max-w-sm w-full space-y-5 sm:border-b-2 sm:border-indigo-500 dark:border-indigo-500 p-2'>
+      <div className='max-w-lg sm:max-w-sm w-full space-y-5 p-2'>
         <LogoAuth />
         <h2 className='text-center font-light text-4xl text-indigo-500 dark:text-indigo-500'>
           Crea tu cuenta

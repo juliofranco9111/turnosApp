@@ -30,7 +30,7 @@ export const LoginScreen = () => {
 
   return (
     <div className='sm:min-h-screen flex flex-col items-center justify-center py-12 sm:px-6 lg:px-8 animate__animated animate__fadeIn'>
-      <div className='max-w-lg bg-transparent sm:max-w-sm w-full space-y-8 sm:border-b-2 sm:border-indigo-500 dark:border-indigo-500 p-2'>
+      <div className='max-w-lg bg-transparent sm:max-w-sm w-full space-y-8 p-2'>
         <LogoAuth />
         <h2 className='text-center font-light text-4xl text-indigo-500 dark:text-indigo-500 '>
           Hola, Julio
@@ -74,28 +74,29 @@ export const LoginScreen = () => {
                 Recordar
               </label>
             </div>
-            <div className='w-full col-span-2 py-2'>
-              <ButtonAuth
-                title='Ingresar'
-                loading={loading}
-                fn={handleSubmit}
-                disabled={!email || !password}
-              />
+
+            <div className='text-sm text-center my-auto'>
+              <a
+                href='google'
+                className='text-gray-600 hover:text-gray-800
+            dark:text-gray-300 dark:hover:text-gray-100'>
+                Olvidé mi contraseña
+              </a>
             </div>
           </div>
         </form>
       </div>
-      <div className='grid grid-cols-2 w-full h-auto mx-auto mt-4 max-w-lg sm:max-w-sm pr-2'>
-        <div className='text-sm text-center my-auto'>
-          <a
-            href='google'
-            className='text-gray-600 hover:text-gray-800
-            dark:text-gray-300 dark:hover:text-gray-100'>
-            Olvidé mi contraseña
-          </a>
-        </div>
-        <div className='text-sm w-12/12 text-center border border-gray-300 hover:bg-gray-200 transition hover:text-gray-900 hover:shadow dark:border-gray-50 dark:text-gray-200 dark:hover:text-gray-800  rounded p-2'>
-          <Link to='/registro'>Crea una cuenta</Link>
+      <div className='grid grid-cols-2 gap-2 w-full h-auto mx-auto mt-4 max-w-lg sm:max-w-sm px-2'>
+        <button className='text-sm h-10 my-auto text-center hover:bg-gray-200 transition hover:text-gray-900 hover:shadow dark:border-gray-50 dark:text-gray-200 dark:hover:text-gray-800 rounded'>
+          <Link to='/registro'>Crea tu cuenta</Link>
+        </button>
+        <div className='w-full py-2'>
+          <ButtonAuth
+            title='Ingresar'
+            loading={loading}
+            fn={handleSubmit}
+            disabled={!email || !password}
+          />
         </div>
       </div>
     </div>

@@ -35,18 +35,17 @@ export const startRegister = ({
   email,
   password,
   role,
+  document,
   fName,
   lName,
-  specialty = '',
 }) => {
   const name = `${fName} ${lName}`;
-
-  const endpoint =
-    role === 'PROFESSIONAL_ROLE' ? 'auth/new-professional' : 'auth/new-user';
+  const img = 'https://www.pngkey.com/png/full/349-3499617_person-placeholder-person-placeholder.png';
+  const endpoint = 'auth/new-user';
   return async (dispatch) => {
     const resp = await fetchWithoutToken(
       endpoint,
-      { name, email, password, role, specialty },
+      { name, email, password, role, document, img },
       'POST'
     );
 
