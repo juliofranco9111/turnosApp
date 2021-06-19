@@ -1,5 +1,5 @@
 import React from 'react';
-import { PatientsTable } from '../components/ui/PatientsTable';
+import { PatientsTable } from '../../components/ui/PatientsTable';
 
 export const PatientsScreen = () => {
   return (

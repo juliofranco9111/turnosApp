@@ -1,10 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { startCreateAppointment } from '../actions/appointment';
-import { ButtonGeneral } from '../components/ui/ButtonGeneral';
-import { DateTimePicker } from '../components/ui/NewAppointment/DateTimePicker';
-import { ProfessionalCard } from '../components/ui/NewAppointment/ProfessionalCard';
-import { MONTHS } from '../helpers/datePickerLocale';
+import { startCreateAppointment } from '../../actions/appointment';
+import { ButtonGeneral } from '../../components/ui/ButtonGeneral';
+import { DateTimePicker } from '../../components/ui/NewAppointment/DateTimePicker';
+import { ProfessionalCard } from '../../components/ui/NewAppointment/ProfessionalCard';
+import { MONTHS } from '../../helpers/datePickerLocale';
 
 export const NewAppointmentScreen = () => {
   const { appointment, auth } = useSelector(state => state);

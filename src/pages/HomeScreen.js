@@ -1,5 +1,5 @@
 import React from 'react';
-import { NewAppointmentScreen } from './NewAppointmentScreen';
+import { NewAppointmentScreen } from './user/NewAppointmentScreen';
 
 export const HomeScreen = () => {
   return (

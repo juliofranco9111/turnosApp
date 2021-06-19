@@ -1,5 +1,5 @@
 import React from 'react';
-import { NewCalendar } from '../components/newCalendar/NewCalendar';
+import { NewCalendar } from '../../components/newCalendar/NewCalendar';
 /* import { CalendarComponent } from '../components/calendar/CalendarComponent';
 import { events } from '../helpers/events'; */
 

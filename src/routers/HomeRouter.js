@@ -9,10 +9,10 @@ import {
 import { getProfileUser } from '../actions/user';
 import { SideBar } from '../components/ui/SideBar';
 import { HomeScreen } from '../pages/HomeScreen';
-import { PatientsScreen } from '../pages/PatientsScreen';
-import { PendingScreen } from '../pages/PendingScreen';
+import { PatientsScreen } from '../pages/admin/PatientsScreen';
+import { PendingScreen } from '../pages//admin/PendingScreen';
 import { ProfileScreen } from '../pages/ProfileScreen';
-import { NewAppointmentScreen } from '../pages/NewAppointmentScreen';
+import { NewAppointmentScreen } from '../pages/user/NewAppointmentScreen';
 import { AppointmentsScreen } from '../pages/user/AppointmentsScreen';
 import { NavBarMobile } from '../components/ui/NavBarMobile';
 
