@@ -18,6 +18,7 @@ export const ModalBody = ({ visibility = false }) => {
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
       zIndex: '5'
+      
     },
     overlay: {
       background: 'rgb(0,0,0, 80%)',
