@@ -12,7 +12,7 @@ export const RegisterScreen = () => {
   //const [errors, setErrors] = useState(false);
   const [loading, setLoading] = useState(false);
 
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const initialValues = {
     fName: '',
@@ -36,7 +36,6 @@ export const RegisterScreen = () => {
       role: 'USER_ROLE',
     };
 
-
     dispatch(startRegister(formData));
     setLoading(false);
   };
@@ -50,8 +49,7 @@ export const RegisterScreen = () => {
         </h2>
         <form className='mt-8 space-y-6' action='#' method='POST'>
           <div className='-space-y-px'>
-             
-             {/*    <div className='animate__animated animate__fadeIn animate__faster'>
+            {/*    <div className='animate__animated animate__fadeIn animate__faster'>
                   <InputErrorAlert title='Error' msg='la contraseña está mala'/>
                 </div>
               */}
@@ -122,16 +120,13 @@ export const RegisterScreen = () => {
             </div>
           </div>
         </form>
-        <div className='grid grid-cols-2 mx-auto mt-4 w-full'>
+        <div className='grid grid-cols-2 gap-2 mx-auto mt-4 w-full'>
           <div>
-            <p className='mt-2 text-center text-sm text-gray-600'>
-              <Link
-                to='/ingreso'
-                className='font-medium text-gray-600 hover:text-gray-800 
-              dark:text-gray-300 dark:hover:text-gray-100'>
-                Ya tengo una cuenta
-              </Link>
-            </p>
+            
+              <Link to='/ingreso'>
+                <button className='text-sm h-10 w-full border my-auto text-center hover:bg-gray-200 transition px-3 hover:text-gray-900 hover:shadow dark:border-gray-50 dark:text-gray-200 dark:hover:text-gray-800 rounded'>Tengo una cuenta</button>
+                </Link>
+            
           </div>
           <div>
             <ButtonAuth

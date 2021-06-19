@@ -46,7 +46,7 @@ export const ModalTimePicker = ({ show = false }) => {
       onRequestClose={closeModal}
       style={customStyles}
       contentLabel='Example Modal'>
-      <div className='mx-auto bg-gray-50 rounded p-4 w-full md:w-1/3 dark:bg-gray-800'>
+      <div className='mx-auto bg-gray-50 rounded p-4 w-full md:w-2/3 dark:bg-gray-800'>
         <h1 className='text-center font-bold text-2xl text-gray-600 dark:text-gray-200'>Selecciona una hora:</h1>
         <ListHour />
         <div className='mx-auto'>

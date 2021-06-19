@@ -60,8 +60,8 @@ export const LoginScreen = () => {
             </div>
           </div>
 
-          <div className='grid grid-cols-3 items-center justify-around'>
-            <div className='flex col-span-1 ml-3'>
+          <div className='grid grid-cols-2 items-center justify-evenly'>
+            <div className='flex col-span-1'>
               <input
                 id='remember_me'
                 name='remember_me'
@@ -75,7 +75,7 @@ export const LoginScreen = () => {
               </label>
             </div>
 
-            <div className='text-sm text-center my-auto'>
+            <div className='text-sm text-right my-auto'>
               <a
                 href='google'
                 className='text-gray-600 hover:text-gray-800
@@ -86,11 +86,13 @@ export const LoginScreen = () => {
           </div>
         </form>
       </div>
-      <div className='grid grid-cols-2 gap-2 w-full h-auto mx-auto mt-4 max-w-lg sm:max-w-sm px-2'>
-        <button className='text-sm h-10 my-auto text-center hover:bg-gray-200 transition hover:text-gray-900 hover:shadow dark:border-gray-50 dark:text-gray-200 dark:hover:text-gray-800 rounded'>
-          <Link to='/registro'>Crea tu cuenta</Link>
+      <div className='grid grid-cols-2 gap-2 w-full px-2 sm:p-none h-auto mx-auto mt-4 max-w-lg sm:max-w-sm'>
+          <Link to='/registro'>
+        <button className='text-sm h-10 w-full border my-auto text-center hover:bg-gray-200 transition px-3 hover:text-gray-900 hover:shadow dark:border-gray-50 dark:text-gray-200 dark:hover:text-gray-800 rounded'>
+            Crea tu cuenta
         </button>
-        <div className='w-full py-2'>
+            </Link>
+        <div className='w-full'>
           <ButtonAuth
             title='Ingresar'
             loading={loading}

@@ -35,7 +35,10 @@ export const ModalBody = ({ visibility = false }) => {
       onRequestClose={onClose}
       style={customStyles}
       contentLabel='Example Modal'>
+        <div className='md:w-2/3'>
+
       <MonthsList />
+        </div>
     </Modal>
   );
 };
