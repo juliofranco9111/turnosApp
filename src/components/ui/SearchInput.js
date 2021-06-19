@@ -1,12 +1,22 @@
 import React from 'react';
 
-export const SearchInput = () => {
+
+export const SearchInput = ({ value, fn }) => {
+ 
+
+  
+
+
   return (
     <div className='flex w-full'>
       <input
-        type='search'
+        type='text'
         className='bg-gray-200 w-full rounded border-0 outline-none dark:text-gray-50 p-2 dark:bg-gray-700 '
         placeholder='Buscar..'
+        name='term'
+        onChange={ fn }
+        value={value}
+        
       />
         <svg
           xmlns='http://www.w3.org/2000/svg'
