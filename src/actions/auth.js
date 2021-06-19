@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 // Cheking if logged
 export const startChecking = () => {
   return async (dispatch) => {
+    
     const resp = await fetchWithToken('auth/renew');
 
     const body = await resp.json();
