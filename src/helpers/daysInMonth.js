@@ -10,7 +10,7 @@ export const daysInMonth = (year, month) => {
       daysMonthWithDate.push(i);
       
     }
-    if(month == 1){
+    if(month === 1){
       
     }
     return daysMonthWithDate;

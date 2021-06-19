@@ -7,12 +7,10 @@ export const PatientsTable = () => {
   const [list, setList] = useState(fakeUsers);
 
   const setUsersFn = (searchTerm) => {
-    console.log(searchTerm);
-    console.log(list);
     const userList = fakeUsers.filter((user) => {
       let stringName = `${user.name.first.toLowerCase()} ${user.name.last.toLowerCase()}`;
 
-      if (stringName.match(searchTerm)) {
+      if (stringName.match(searchTerm.toLowerCase())) {
         return user;
       }
       return false;

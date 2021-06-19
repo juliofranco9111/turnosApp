@@ -1,5 +1,5 @@
 
-const baseUrl = 'http://localhost:4000/api';
+const baseUrl = 'https://turnos-app-react.herokuapp.com/api';
 
 
 const fetchWithoutToken = (endpoint, data, method = 'GET') => {

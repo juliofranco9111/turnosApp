@@ -12,13 +12,11 @@ export const DateTimePicker = () => {
   const { month, day, hour } = useSelector((state) => state.appointment.date);
   const dispatch = useDispatch();
 
-  const [currentMonth, setCurrentMonth] = useState(month);
-
+  const [, setCurrentMonth] = useState(month);
 
   useEffect(() => {
     setCurrentMonth(month);
   }, [month]);
-
 
   const toggleList = () => {
     dispatch(showList(list));
@@ -33,30 +31,30 @@ export const DateTimePicker = () => {
 
   return (
     <>
-      <div className='mx-auto mt-4'>
-        <div className='mx-auto text-center rounded grid grid-cols-3 gap-1 justify-center'>
-            <ButtonMonth fn={toggleListDays} msg={day} />
-            <ButtonMonth fn={toggleList} msg={MONTHS[month]} />
-            <ButtonMonth fn={toggleListHours} msg={`${hour}:00`} />
+      <div className='mx-auto text-center rounded mt-5 grid grid-cols-3 grid-rows-2 gap-2 md:gap-0'>
+        <div className='text-xl text-center'>Dia:</div>
+        <div className='text-xl text-center'>Mes:</div>
+        <div className='text-xl text-center'>Hora:</div>
+        <ButtonMonth fn={toggleListDays} msg={day} />
+        <ButtonMonth fn={toggleList} msg={MONTHS[month]} />
+        <ButtonMonth fn={toggleListHours} msg={`${hour}:00`} />
 
-          {list && (
-            <div className='relative p-4 items-center w-full'>
-              <ModalMonths show={list} />
-            </div>
-          )}
-          {listDays && (
-            <div className='relative p-4 bg-white items-center w-full'>
-              <ModalDatePicker show={listDays} />
-            </div>
-          )}
-          {listHour && (
-            <div className='relative p-4 bg-white items-center w-full'>
-              <ModalTimePicker show={listHour} />
-            </div>
-          )}
-        </div>
+        {list && (
+          <div className='relative p-4 items-center w-full'>
+            <ModalMonths show={list} />
+          </div>
+        )}
+        {listDays && (
+          <div className='relative p-4 bg-white items-center w-full'>
+            <ModalDatePicker show={listDays} />
+          </div>
+        )}
+        {listHour && (
+          <div className='relative p-4 bg-white items-center w-full'>
+            <ModalTimePicker show={listHour} />
+          </div>
+        )}
       </div>
-  
     </>
   );
 };

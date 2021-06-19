@@ -38,7 +38,7 @@ export const NewAppointmentScreen = () => {
   }
 
   return (
-    <div className='w-full sm:w-10/12 md:w-8/12 lg:w-6/12 mx-auto'>
+    <div className='w-full sm:w-8/12 md:w-6/12 lg:w-5/12 p-3 mx-auto'>
       <ProfessionalCard />
       <DateTimePicker />
       <h1 className='text-center font-bold text-gray-500 text-2xl my-3 dark:text-gray-500'>
