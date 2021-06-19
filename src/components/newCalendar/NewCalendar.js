@@ -80,38 +80,38 @@ export const NewCalendar = () => {
               <button
                 disabled={month < 1}
                 onClick={subsMonth}
-                className='rounded mx-auto col w-12 h-12 m-2 hover:text-indigo-700 hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100'>
+                className='rounded text-indigo-500 mx-auto col w-12 h-12 m-2 hover:text-indigo-700 hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100'>
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  className='h-6 w-6 mx-auto'
+                  className='h-8 w-8 mx-auto'
                   fill='none'
                   viewBox='0 0 24 24'
                   stroke='currentColor'>
                   <path
                     strokeLinecap='round'
                     strokeLinejoin='round'
-                    strokeWidth={2}
+                    strokeWidth={1}
                     d='M15 19l-7-7 7-7'
                   />
                 </svg>
               </button>
-            <div className='text-2xl text-center font-bold self-center'>
+            <div className='text-4xl text-center font-thin text-indigo-500 self-center'>
               <h1>{MONTHS[month]} ({data.length})</h1>
             </div>
             <button
               disabled={month >= 11}
               onClick={addMonth}
-              className='rounded mx-auto w-12 h-12 m-2 hover:text-indigo-700 hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100'>
+              className='rounded text-indigo-500 mx-auto w-12 h-12 m-2 hover:text-indigo-700 hover:bg-gray-100 dark:bg-gray-900 dark:hover:bg-gray-700 dark:hover:text-gray-100'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
-                className='h-6 w-6 mx-auto'
+                className='h-8 w-8 mx-auto'
                 fill='none'
                 viewBox='0 0 24 24'
                 stroke='currentColor'>
                 <path
                   strokeLinecap='round'
                   strokeLinejoin='round'
-                  strokeWidth={2}
+                  strokeWidth={1}
                   d='M9 5l7 7-7 7'
                 />
               </svg>

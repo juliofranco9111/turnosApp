@@ -19,7 +19,7 @@ export const ProfessionalCard = () => {
           <div className='p-2'>
             <img
               src={professional.img}
-              className='h-24 mx-auto rounded-full'
+              className='h-24 mx-auto rounded'
               alt='profesional'
             />
           </div>

@@ -11,10 +11,15 @@ import { LogoAuth } from '../../components/ui/LogoAuth';
 export const LoginScreen = () => {
   const dispatch = useDispatch();
 
+  const localEmail = localStorage.getItem('email')
+
   const initialValues = {
-    email: 'test@test.com',
-    password: '123456',
+    email: localEmail ? localEmail : '',
+    password: ''
   };
+
+  const [remember, setRemember] = useState(true)
+
   const [values, handleInputChange] = useForm(initialValues);
 
   const { email, password } = values;
@@ -23,9 +28,18 @@ export const LoginScreen = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setLoading(true);
 
     dispatch(startLogin(email, password));
+
+    if(remember){
+      console.log('ok')
+      localStorage.setItem('email', email)
+    }else{
+      console.log('not');
+      localStorage.removeItem('email');
+    }
   };
 
   return (
@@ -35,8 +49,8 @@ export const LoginScreen = () => {
         <h2 className='text-center font-light text-4xl text-indigo-500 dark:text-indigo-500 '>
           Hola, Julio
         </h2>
-        <form className='mt-8 space-y-6' action='#' method='POST'>
-          <input type='hidden' name='remember' value='true' />
+        <form onSubmit={handleSubmit} className='mt-8 space-y-6' action='#' method='POST'>
+          
           <div className='-space-y-px'>
             <div>
               <InputWithLabel
@@ -63,8 +77,10 @@ export const LoginScreen = () => {
           <div className='grid grid-cols-2 items-center justify-evenly'>
             <div className='flex col-span-1'>
               <input
-                id='remember_me'
-                name='remember_me'
+                id='remember'
+                name='remember'
+                checked={remember}
+                onChange={() => setRemember(!remember)}
                 type='checkbox'
                 className='h-4 w-4 focus:ring-indigo-500 border-gray-100'
               />
