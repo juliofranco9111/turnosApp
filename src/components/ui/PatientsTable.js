@@ -4,25 +4,29 @@ import { TableHead } from './TableHead';
 import { fakeUsers } from '../../helpers/fakeUsers';
 
 export const PatientsTable = () => {
-  const [users, setUsers] = useState(fakeUsers);
+  const [list, setList] = useState(fakeUsers);
 
   const setUsersFn = (searchTerm) => {
-    let newUsers = fakeUsers.filter(
-      (user) =>
-        user.name.first.toLowerCase().match(searchTerm.toLowerCase()) ||
-        user.name.last.toLowerCase().match(searchTerm.toLowerCase())
-    );
+    console.log(searchTerm);
+    console.log(list);
+    const userList = fakeUsers.filter((user) => {
+      let stringName = `${user.name.first.toLowerCase()} ${user.name.last.toLowerCase()}`;
 
-    //TODO: Search by document !!! 
+      if (stringName.match(searchTerm)) {
+        return user;
+      }
+      return false;
+    });
 
-    setUsers(newUsers);
+    //TODO: Search by document !!!
+    setList(userList);
   };
 
   return (
     <>
       <TableHead setUsers={setUsersFn} />
       <div className='mx-auto table__patients overflow-y-auto overflow-x-hidden'>
-        <TableBody users={users} />
+        <TableBody users={list} />
       </div>
     </>
   );

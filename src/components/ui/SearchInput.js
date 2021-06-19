@@ -11,7 +11,7 @@ export const SearchInput = ({ value, fn }) => {
     <div className='flex w-full'>
       <input
         type='text'
-        className='bg-gray-200 w-full rounded border-0 outline-none dark:text-gray-50 p-2 dark:bg-gray-700 '
+        className='bg-gray-100 w-full rounded border-0 outline-none dark:text-gray-50 p-2 dark:bg-gray-700 '
         placeholder='Buscar..'
         name='term'
         onChange={ fn }
@@ -20,7 +20,7 @@ export const SearchInput = ({ value, fn }) => {
       />
         <svg
           xmlns='http://www.w3.org/2000/svg'
-          className='h-6 w-6 relative mt-2 right-8 text-gray-500'
+          className='h-6 w-6 relative mt-2 right-8 text-indigo-500'
           fill='none'
           viewBox='0 0 24 24'
           stroke='currentColor'>
