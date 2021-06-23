@@ -1,6 +1,7 @@
 import React from 'react';
 import { INPUT_CLASS } from '../../helpers/commonCss';
 
+
 export const InputWithLabel = ({
   label = null,
   type,
@@ -8,8 +9,11 @@ export const InputWithLabel = ({
   placeholder = '',
   value,
   change,
+  Icon,
   svgPath = '',
-}) => {  
+}) => { 
+  
+  console.log(Icon);
 
   
 
@@ -38,19 +42,9 @@ export const InputWithLabel = ({
           <label
             className='mx-auto text-indigo-400 my-auto'
             htmlFor={`${name}`}>
-            <svg
-              xmlns='http://www.w3.org/2000/svg'
-              className='h-7 w-7'
-              fill='none'
-              viewBox='0 0 24 24'
-              stroke='currentColor'>
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={1}
-                d={`${svgPath}`}
-              />
-            </svg>
+              <i className="fad fa-at"></i>
+              <i className="fal fa-at"></i>
+            <span></span>
           </label>
         </div>
       </div>
